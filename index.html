@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="IndustryNav: Exploring Spatial Reasoning of Embodied Agents in Dynamic Industrial Navigation."
+    />
+    <meta
+      name="keywords"
+      content="IndustryNav, Embodied AI, Navigation, VLLM, Spatial Reasoning, Unity, Benchmark"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>IndustryNav: Dynamic Industrial Navigation Benchmark</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="./static/images/industrynav_logo1.png" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css" />
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css" />
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css" />
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
+    />
+    <link rel="stylesheet" href="./static/css/index.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+    <!-- MathJax for rendering formulas -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+  </head>
+  <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <!-- FIX #2: Removed the logo, keeping only the text -->
+        <a class="navbar-item" href="#">
+          <span style="font-weight: bold; font-size: 1.2rem; color: #363636"
+            >IndustryNav</span
+          >
+        </a>
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-start" style="flex-grow: 1; justify-content: center">
+          <a class="navbar-item" href="#">Home</a>
+          <a class="navbar-item" href="#abstract">Abstract</a>
+          <a class="navbar-item" href="#industrynav">Benchmark</a>
+          <a class="navbar-item" href="#results">Results</a>
+          <a class="navbar-item" href="#findings">Findings</a>
+
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link"> More Research </a>
+            <div class="navbar-dropdown">
+              <a
+                class="navbar-item"
+                href="https://anhdao69.github.io/IndustryEQA_website/"
+              >
+                IndustryEQA
+              </a>
+              <a
+                class="navbar-item"
+                href="https://github.com/JackYFL/awesome-VLLMs"
+              >
+                Awesome-VLLMs
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <!-- TITLE WITH LOGO -->
+              <h1 class="title is-1 publication-title">
+                <span class="is-size-2" style="vertical-align: middle">
+                  <img
+                    src="./static/images/industrynav_logo2.png"
+                    alt="Logo"
+                    style="
+                      height: 2.5em;
+                      vertical-align: middle;
+                      margin-bottom: 1em;
+                    "
+                  />
+                </span>
+                : Exploring Spatial Reasoning of Embodied Agents in Dynamic
+                Industrial Navigation
+              </h1>
+
+              <!-- AUTHORS -->
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">
+                  <a href="https://jackyfl.github.io/">Yifan Li</a
+                  ><sup>1*</sup>,</span
+                >
+                <span class="author-block">
+                  <a href="https://github.com/lichili233">Lichi Li</a
+                  ><sup>6*</sup>,</span
+                >
+                <span class="author-block">
+                  <a href="https://www.egr.msu.edu/~yukong/team/8_ahn/"
+                    >Anh Dao</a
+                  ><sup>1*</sup>,</span
+                >
+                <span class="author-block">
+                  <a href="#">Xinyu Zhou</a><sup>1</sup>,</span
+                >
+                <span class="author-block">
+                  <a href="https://yichengqiao.github.io/">Yicheng Qiao</a
+                  ><sup>1</sup>,</span
+                >
+                <span class="author-block">
+                  <a href="https://zheda-mai.github.io/">Zheda Mai</a
+                  ><sup>3</sup>,</span
+                >
+                <span class="author-block">
+                  <a href="https://daeunni.github.io/">Daeun Lee</a
+                  ><sup>2</sup>,</span
+                >
+                <span class="author-block">
+                  <a href="https://chen-zichen.github.io/">Zichen Chen</a
+                  ><sup>4</sup>,</span
+                >
+                <br />
+                <span class="author-block">
+                  <a href="https://zhen-tan-dmml.github.io/">Zhen Tan</a
+                  ><sup>5</sup>,</span
+                >
+                <span class="author-block">
+                  <a href="https://www.cs.unc.edu/~mbansal/">Mohit Bansal</a
+                  ><sup>2</sup>,</span
+                >
+                <span class="author-block">
+                  <a href="https://www.egr.msu.edu/~yukong/">Yu Kong</a
+                  ><sup>1</sup></span
+                >
+              </div>
+
+              <!-- AFFILIATIONS -->
+              <div class="is-size-5 publication-authors">
+                <span class="author-block"
+                  ><sup>1</sup>Michigan State University,</span
+                >
+                <span class="author-block"><sup>2</sup>UNC Chapel Hill,</span>
+                <span class="author-block"
+                  ><sup>3</sup>Ohio State University,</span
+                >
+                <span class="author-block"><sup>4</sup>UC Santa Barbara,</span>
+                <span class="author-block"
+                  ><sup>5</sup>Arizona State University,</span
+                >
+                <span class="author-block"
+                  ><sup>6</sup>Independent Researcher</span
+                >
+              </div>
+
+              <!-- EQUAL CONTRIBUTION NOTE -->
+              <div class="is-size-6 publication-authors">
+                <span class="author-block"><sup>*</sup>Equal Contribution</span>
+              </div>
+
+              <!-- LINKS -->
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  <span class="link-block">
+                    <a
+                      href="#"
+                      class="external-link button is-normal is-rounded is-dark"
+                    >
+                      <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                      <span>Paper</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a
+                      href="#"
+                      class="external-link button is-normal is-rounded is-dark"
+                    >
+                      <span class="icon"><i class="ai ai-arxiv"></i></span>
+                      <span>arXiv</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a
+                      href="#"
+                      class="external-link button is-normal is-rounded is-dark"
+                    >
+                      <span class="icon"><i class="fab fa-youtube"></i></span>
+                      <span>Video</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a
+                      href="#"
+                      class="external-link button is-normal is-rounded is-dark"
+                    >
+                      <span class="icon"><i class="fab fa-github"></i></span>
+                      <span>Code</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a
+                      href="#"
+                      class="external-link button is-normal is-rounded is-dark"
+                    >
+                      <span class="icon"><i class="far fa-images"></i></span>
+                      <span>Data</span>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero teaser">
+      <div class="container is-max-desktop">
+        <div class="hero-body">
+          <figure class="image is-fullwidth">
+            <img
+              src="./static/images/IndustryNav_intro.png"
+              alt="IndustryNav Introduction"
+            />
+          </figure>
+          <h2 class="subtitle has-text-centered">
+            <strong>IndustryNav</strong> provides a zero-shot navigation setting
+            where an embodied agent is prompted with an egocentric image, global
+            odometry, and action–state history to reach a target while avoiding
+            dynamic obstacles.
+          </h2>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="abstract">
+      <div class="container is-max-desktop">
+        <!-- Abstract -->
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                While Visual Large Language Models (VLLMs) show great promise as
+                embodied agents, they continue to face substantial challenges in
+                spatial reasoning. Existing embodied benchmarks largely focus on
+                passive, static household environments and evaluate only
+                isolated capabilities, failing to capture holistic performance
+                in dynamic, real-world complexity.
+              </p>
+              <p>
+                To fill this gap, we present <strong>IndustryNav</strong>, the
+                first dynamic industrial navigation benchmark for active spatial
+                reasoning. IndustryNav leverages 12 manually created,
+                high-fidelity Unity warehouse scenarios featuring dynamic
+                objects and human movement. Our evaluation employs a PointGoal
+                navigation pipeline that effectively combines egocentric vision
+                with global odometry to assess holistic local-global planning.
+              </p>
+              <p>
+                Crucially, we introduce the
+                <span class="safety-highlight">"collision rate"</span> and
+                <span class="safety-highlight">"warning rate"</span> metrics to
+                measure safety-oriented behaviors and distance estimation. A
+                comprehensive study of nine state-of-the-art VLLMs (including
+                models such as GPT-5-mini, Claude-4.5, and Gemini-2.5) reveals
+                that closed-source models maintain a consistent advantage;
+                however, all agents exhibit notable deficiencies in robust path
+                planning, collision avoidance and active exploration.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AGENT CAMERAS SECTION -->
+    <section class="section" id="industrynav">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Agent Viewpoints</h2>
+        <div class="content has-text-justified">
+          <p>
+            To capture both local and global information, we employ a
+            multi-sensor tracking setup. The agent utilizes an
+            <strong>Egocentric Camera</strong> for immediate perception and
+            collision avoidance, while a <strong>Top-Down View</strong> provides
+            global reference for trajectory monitoring.
+          </p>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-10">
+            <figure class="image is-fullwidth">
+              <img
+                src="./static/images/agent_camera.png"
+                alt="Agent Cameras"
+                style="
+                  border-radius: 10px;
+                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                "
+              />
+              <figcaption class="has-text-centered mt-2">
+                <strong>Left:</strong> Egocentric view (what the agent sees).
+                <strong>Right:</strong> Top-down global odometry view.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- METRICS CAROUSEL SECTION -->
+    <section class="section has-background-light">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Evaluation Metrics</h2>
+
+        <div class="content has-text-centered mb-5">
+          <p>
+            We propose five metrics across three dimensions: Success,
+            Efficiency, and Safety.
+          </p>
+          <div class="box is-inline-block has-text-left">
+            <h5 class="title is-5 mb-2">Notation:</h5>
+            <ul class="is-size-6" style="margin-top: 0">
+              <li>\( N \): Total number of runs.</li>
+              <li>\( d_i \): Final distance to target in run \(i\).</li>
+              <li>\( D_i \): Initial distance to target in run \(i\).</li>
+              <li>\( T_i \): Total steps taken in run \(i\).</li>
+              <li>\( \delta \): Success threshold distance.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="results-carousel" class="carousel results-carousel">
+          <!-- Success Ratio -->
+          <div class="item">
+            <div
+              class="box has-text-centered"
+              style="
+                height: 320px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+              "
+            >
+              <h4 class="title is-4 icon-text">
+                <span class="icon has-text-success"
+                  ><i class="fas fa-flag-checkered"></i
+                ></span>
+                <span>Success Ratio (SR)</span>
+              </h4>
+              <p>
+                Percentage of successful runs where the agent reaches the
+                target.
+              </p>
+              <br />
+              <p class="is-size-4">
+                \[ \mathrm{SR} = \frac{1}{N} \sum_{i=1}^{N} \mathbb{1}[d_i \leq
+                \delta] \]
+              </p>
+            </div>
+          </div>
+
+          <!-- Distance Ratio -->
+          <div class="item">
+            <div
+              class="box has-text-centered"
+              style="
+                height: 320px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+              "
+            >
+              <h4 class="title is-4 icon-text">
+                <span class="icon has-text-info"
+                  ><i class="fas fa-ruler-horizontal"></i
+                ></span>
+                <span>Distance Ratio (DR)</span>
+              </h4>
+              <p>
+                Quantifies the progress toward the target relative to the
+                initial distance.
+              </p>
+              <br />
+              <p class="is-size-4">
+                \[ \mathrm{DR}=\frac{1}{N}\sum_{i=1}^N{\frac{D_i-d_i}{D_i}} \]
+              </p>
+            </div>
+          </div>
+
+          <!-- Average Steps -->
+          <div class="item">
+            <div
+              class="box has-text-centered"
+              style="
+                height: 320px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+              "
+            >
+              <h4 class="title is-4 icon-text">
+                <span class="icon has-text-warning"
+                  ><i class="fas fa-shoe-prints"></i
+                ></span>
+                <span>Average Steps (AS)</span>
+              </h4>
+              <p>Evaluates trajectory efficiency. Lower is better.</p>
+              <br />
+              <p class="is-size-4">
+                \[ \mathrm{AS} = \frac{1}{N} \sum_{i=1}^{N} T_i \]
+              </p>
+            </div>
+          </div>
+
+          <!-- Collision Ratio -->
+          <div class="item">
+            <div
+              class="box has-text-centered"
+              style="
+                height: 320px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+              "
+            >
+              <h4 class="title is-4 icon-text">
+                <span class="icon has-text-danger"
+                  ><i class="fas fa-car-crash"></i
+                ></span>
+                <span>Collision Ratio (CR)</span>
+              </h4>
+              <p>
+                Proportion of forward actions resulting in a collision (\(C_i\))
+                out of total forward actions (\(F_i\)).
+              </p>
+              <br />
+              <p class="is-size-4">
+                \[ \mathrm{CR}=\frac{1}{N}\sum_{i=1}^N{\frac{C_i}{F_i}} \]
+              </p>
+            </div>
+          </div>
+
+          <!-- Warning Ratio -->
+          <div class="item">
+            <div
+              class="box has-text-centered"
+              style="
+                height: 320px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+              "
+            >
+              <h4 class="title is-4 icon-text">
+                <span class="icon has-text-danger"
+                  ><i class="fas fa-exclamation-triangle"></i
+                ></span>
+                <span>Warning Ratio (WR)</span>
+              </h4>
+              <p>
+                Measures frequency of warning states (\(W_i\)) per step based on
+                depth map analysis.
+              </p>
+              <br />
+              <p class="is-size-4">
+                \[ \mathrm{WR} = \frac{1}{N}\sum_{i=1}^N{\frac{W_i}{T_i}} \]
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WARNING DETECTION SECTION -->
+    <!-- FIX #1: Made the image bigger by using full container width -->
+    <section class="section">
+      <div class="container is-max-widescreen">
+        <h2 class="title is-3 has-text-centered">Warning Detection System</h2>
+        <div class="content has-text-justified">
+          <p>
+            Safety is paramount in industrial settings. We implement a warning
+            system using <strong>Depth Pro</strong> to estimate distance. A
+            warning is triggered when the minimum depth values within the Region
+            of Interest (RoI) fall below a predefined safety threshold.
+          </p>
+        </div>
+        <!-- Single Image Display for Warning Demo 2 - Made Bigger -->
+        <div class="columns is-centered">
+          <div class="column is-12">
+            <figure class="image is-fullwidth">
+              <img
+                src="./static/images/warning_demo_2.png"
+                alt="Warning Detection Demo"
+                style="
+                  border-radius: 10px;
+                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                  width: 100%;
+                "
+              />
+              <figcaption class="has-text-centered mt-2">
+                Example of warning detection: Proximity to machinery and
+                obstacles triggers a safety warning.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="results">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Experimental Results</h2>
+        <div class="content has-text-justified">
+          <p>
+            Comparison of nine state-of-the-art VLLMs.
+            <span style="color: #d32f2f; font-weight: bold">Red</span> indicates
+            best Closed-Source performance,
+            <span style="color: #1976d2; font-weight: bold">Blue</span>
+            indicates best Open-Source performance.
+          </p>
+        </div>
+
+        <!-- Improved Results Table -->
+        <div class="table-container">
+          <table class="table is-fullwidth is-hoverable is-bordered">
+            <!-- MODIFIED TABLE HEADER WITH BLUE THEME -->
+            <thead>
+              <tr style="background-color: #2e5cb8; color: white">
+                <th rowspan="2" style="vertical-align: middle; color: white">
+                  Embodied Agents
+                </th>
+                <th colspan="2" class="has-text-centered" style="color: white">
+                  Task Success (%)
+                </th>
+                <th colspan="1" class="has-text-centered" style="color: white">
+                  Efficiency
+                </th>
+                <th colspan="2" class="has-text-centered" style="color: white">
+                  Safety (%)
+                </th>
+              </tr>
+              <tr style="background-color: #2e5cb8; color: white">
+                <th class="has-text-centered" style="color: white">
+                  Success Ratio &uarr;
+                </th>
+                <th class="has-text-centered" style="color: white">
+                  Distance Ratio &uarr;
+                </th>
+                <th class="has-text-centered" style="color: white">
+                  Avg Steps &darr;
+                </th>
+                <th class="has-text-centered" style="color: white">
+                  Collision Ratio &darr;
+                </th>
+                <th class="has-text-centered" style="color: white">
+                  Warning Ratio &darr;
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Closed Source -->
+              <tr
+                style="
+                  background-color: #fff8e1;
+                  border-left: 4px solid #ffb300;
+                "
+              >
+                <td colspan="6"><strong>Closed-Source VLLMs</strong></td>
+              </tr>
+              <tr>
+                <td>GPT-4o</td>
+                <td class="has-text-centered">21.53</td>
+                <td class="has-text-centered">49.41</td>
+                <td class="has-text-centered">66.76</td>
+                <td
+                  class="has-text-centered"
+                  style="color: #d32f2f; font-weight: bold"
+                >
+                  7.86
+                </td>
+                <td
+                  class="has-text-centered"
+                  style="color: #d32f2f; font-weight: bold"
+                >
+                  13.45
+                </td>
+              </tr>
+              <tr>
+                <td>GPT-5-mini</td>
+                <td class="has-text-centered">54.17</td>
+                <td class="has-text-centered">81.90</td>
+                <td class="has-text-centered">49.91</td>
+                <td class="has-text-centered">16.89</td>
+                <td class="has-text-centered">24.13</td>
+              </tr>
+              <tr>
+                <td>Claude-Haiku-4.5</td>
+                <td class="has-text-centered">61.81</td>
+                <td class="has-text-centered">82.87</td>
+                <td class="has-text-centered">46.80</td>
+                <td class="has-text-centered">32.18</td>
+                <td class="has-text-centered">31.57</td>
+              </tr>
+              <tr>
+                <td>Claude-Sonnet-4.5</td>
+                <td class="has-text-centered">61.81</td>
+                <td
+                  class="has-text-centered"
+                  style="color: #d32f2f; font-weight: bold"
+                >
+                  86.26
+                </td>
+                <td class="has-text-centered">47.33</td>
+                <td class="has-text-centered">27.68</td>
+                <td class="has-text-centered">31.52</td>
+              </tr>
+              <tr>
+                <td>Gemini-2.5-flash</td>
+                <td
+                  class="has-text-centered"
+                  style="color: #d32f2f; font-weight: bold"
+                >
+                  65.28
+                </td>
+                <td class="has-text-centered">84.49</td>
+                <td
+                  class="has-text-centered"
+                  style="color: #d32f2f; font-weight: bold"
+                >
+                  45.95
+                </td>
+                <td class="has-text-centered">32.14</td>
+                <td class="has-text-centered">37.16</td>
+              </tr>
+
+              <!-- Open Source -->
+              <tr
+                style="
+                  background-color: #e8f5e9;
+                  border-left: 4px solid #43a047;
+                "
+              >
+                <td colspan="6"><strong>Open-Source VLLMs</strong></td>
+              </tr>
+              <tr>
+                <td>Qwen3-VL-8b-Instruct</td>
+                <td class="has-text-centered">4.86</td>
+                <td class="has-text-centered">27.05</td>
+                <td class="has-text-centered">67.22</td>
+                <td class="has-text-centered">27.82</td>
+                <td
+                  class="has-text-centered"
+                  style="color: #1976d2; font-weight: bold"
+                >
+                  25.70
+                </td>
+              </tr>
+              <tr>
+                <td>Qwen3-VL-30b-A3B</td>
+                <td class="has-text-centered">6.25</td>
+                <td class="has-text-centered">26.20</td>
+                <td class="has-text-centered">66.70</td>
+                <td
+                  class="has-text-centered"
+                  style="color: #1976d2; font-weight: bold"
+                >
+                  18.97
+                </td>
+                <td class="has-text-centered">26.28</td>
+              </tr>
+              <tr>
+                <td>LLaMA-4-Scout</td>
+                <td class="has-text-centered">15.28</td>
+                <td class="has-text-centered">56.40</td>
+                <td class="has-text-centered">61.53</td>
+                <td class="has-text-centered">24.38</td>
+                <td class="has-text-centered">35.06</td>
+              </tr>
+              <tr>
+                <td><strong>Nemotron-nano-12b</strong></td>
+                <td
+                  class="has-text-centered"
+                  style="color: #1976d2; font-weight: bold"
+                >
+                  55.56
+                </td>
+                <td
+                  class="has-text-centered"
+                  style="color: #1976d2; font-weight: bold"
+                >
+                  80.48
+                </td>
+                <td
+                  class="has-text-centered"
+                  style="color: #1976d2; font-weight: bold"
+                >
+                  50.69
+                </td>
+                <td class="has-text-centered">31.73</td>
+                <td class="has-text-centered">36.54</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEY FINDINGS SECTION -->
+    <section class="section has-background-light" id="findings">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Key Findings</h2>
+        <p class="has-text-centered mb-5">
+          Our comprehensive evaluation of nine state-of-the-art VLLMs reveals
+          several critical insights about spatial reasoning in dynamic
+          industrial environments.
+        </p>
+
+        <div class="columns is-multiline">
+          <!-- Finding 1 -->
+          <div class="column is-6">
+            <div
+              class="box"
+              style="height: 100%; border-left: 4px solid #e74c3c"
+            >
+              <h4 class="title is-5">
+                <span class="icon has-text-danger"
+                  ><i class="fas fa-exclamation-circle"></i
+                ></span>
+                No VLLM Can Reliably Navigate
+              </h4>
+              <p class="has-text-justified">
+                Across all nine models, the Task Success Ratio remains low
+                (<strong>less than 70%</strong>), and none of them can
+                consistently reach the target across all scenarios. This
+                highlights that
+                <em
+                  >spatial reasoning and long-horizon navigation in dynamic
+                  industrial environments remain fundamentally challenging</em
+                >
+                for current VLLMs.
+              </p>
+            </div>
+          </div>
+
+          <!-- Finding 2 -->
+          <div class="column is-6">
+            <div
+              class="box"
+              style="height: 100%; border-left: 4px solid #3498db"
+            >
+              <h4 class="title is-5">
+                <span class="icon has-text-info"
+                  ><i class="fas fa-trophy"></i
+                ></span>
+                Closed-Source Models Lead
+              </h4>
+              <p class="has-text-justified">
+                Closed-source VLLMs consistently outperform open-source
+                counterparts across task success and efficiency metrics. They
+                achieve substantially higher success rates and generally require
+                <strong>fewer steps to reach targets</strong>, reflecting
+                superior planning and route optimization. Most open-source
+                VLLMs, particularly Qwen3-VL and LLaMA-4, remain less
+                competitive for complex navigation tasks.
+              </p>
+            </div>
+          </div>
+
+          <!-- Finding 3 -->
+          <div class="column is-6">
+            <div
+              class="box"
+              style="height: 100%; border-left: 4px solid #2ecc71"
+            >
+              <h4 class="title is-5">
+                <span class="icon has-text-success"
+                  ><i class="fas fa-star"></i
+                ></span>
+                Nemotron Stands Out
+              </h4>
+              <p class="has-text-justified">
+                Among open-source VLLMs,
+                <strong>Nemotron-nano-12B-v2-VL</strong> stands out with a
+                <strong>55.56% Success Ratio</strong>, approaching closed-source
+                performance levels. It demonstrates reasonable efficiency and
+                moderate safety scores, making it the most promising open-source
+                baseline for spatial reasoning in industrial navigation tasks.
+              </p>
+            </div>
+          </div>
+
+          <!-- Finding 4 -->
+          <div class="column is-6">
+            <div
+              class="box"
+              style="height: 100%; border-left: 4px solid #f39c12"
+            >
+              <h4 class="title is-5">
+                <span class="icon has-text-warning"
+                  ><i class="fas fa-shield-alt"></i
+                ></span>
+                Safety Remains Critical
+              </h4>
+              <p class="has-text-justified">
+                Both closed-source and open-source VLLMs show
+                <strong>high Collision and Warning Ratios</strong>, highlighting
+                substantial deficiencies in hazard perception, navigating around
+                dynamic obstacles, and maintaining consistent collision
+                avoidance.
+                <em
+                  >All VLLMs remain far from achieving the level of safety
+                  required for real-world deployment.</em
+                >
+              </p>
+            </div>
+          </div>
+
+          <!-- Finding 5 - Full Width -->
+          <div class="column is-12">
+            <div class="box" style="border-left: 4px solid #9b59b6">
+              <h4 class="title is-5">
+                <span class="icon has-text-primary"
+                  ><i class="fas fa-brain"></i
+                ></span>
+                Core Reasoning Deficiencies
+              </h4>
+              <div class="columns">
+                <div class="column">
+                  <p class="has-text-justified">
+                    Case analysis reveals that current VLLMs still struggle with
+                    three fundamental capabilities:
+                  </p>
+                  <div class="content mt-3">
+                    <ul>
+                      <li>
+                        <strong>Robust Global Path Planning:</strong> Agents
+                        fail to recognize blocked paths and do not replan routes
+                        when obstacles are encountered.
+                      </li>
+                      <li>
+                        <strong>Active Exploration:</strong> Models often get
+                        stuck in action loops instead of exploring alternatives,
+                        overlooking repeated action-state patterns.
+                      </li>
+                      <li>
+                        <strong>Precise Distance Estimation:</strong> Agents
+                        frequently misperceive clearances, believing paths are
+                        clear when obstacles exist, leading to collisions.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Summary Insight Box -->
+        <div class="notification is-info is-light mt-5">
+          <p class="has-text-centered">
+            <span class="icon"><i class="fas fa-lightbulb"></i></span>
+            <strong>Key Takeaway:</strong> These findings highlight a critical
+            need for embodied research to move beyond passive perception and
+            toward tasks that demand <em>stable planning</em>,
+            <em>active exploration</em>, and <em>safe behavior</em> in dynamic,
+            real-world environments.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container is-max-widescreen">
+        <h2 class="title is-3 has-text-centered">Ablation Studies</h2>
+        <p class="has-text-centered mb-5">
+          To evaluate the effectiveness of key components in our navigation
+          pipeline, we conduct ablation studies on three closed-source VLLMs:
+          Claude-Sonnet-4.5, Gemini-2.5-flash, and GPT-5-mini.
+        </p>
+
+        <div id="ablation-carousel" class="carousel results-carousel">
+          <!-- History Ablation -->
+          <div class="item">
+            <div class="card">
+              <div class="card-image" style="padding: 1.5rem">
+                <figure class="image">
+                  <img
+                    src="./static/images/history_ablation.png"
+                    alt="History Ablation"
+                    style="width: 100%; height: auto; border-radius: 8px"
+                  />
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  <h4 class="title is-4 has-text-centered">
+                    <span class="icon has-text-info"
+                      ><i class="fas fa-history"></i
+                    ></span>
+                    Effect of Action-State Histories
+                  </h4>
+                  <p class="has-text-justified">
+                    We remove action-state histories to assess their impact on
+                    navigation performance. These histories provide temporal
+                    context that helps the agent detect repeated failures,
+                    leading to improved navigation success. Without this
+                    information, the agent is more prone to making short-sighted
+                    decisions and repeating ineffective actions, leading to
+                    lower success rates and less stable trajectories. Results
+                    demonstrate the effectiveness of history in
+                    <strong>increasing the success ratio</strong> and
+                    <strong>reducing collision rates</strong>.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Global Map Ablation -->
+          <div class="item">
+            <div class="card">
+              <div class="card-image" style="padding: 1.5rem">
+                <figure class="image">
+                  <img
+                    src="./static/images/global_ablation.png"
+                    alt="Global Map Ablation"
+                    style="width: 100%; height: auto; border-radius: 8px"
+                  />
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  <h4 class="title is-4 has-text-centered">
+                    <span class="icon has-text-warning"
+                      ><i class="fas fa-map"></i
+                    ></span>
+                    Necessity of Top-Down View Map
+                  </h4>
+                  <p class="has-text-justified">
+                    Although global odometry provides precise information about
+                    the target's relative position, it lacks obstacle layout
+                    information essential for global planning. To assess whether
+                    additional spatial context is beneficial, we augment the
+                    pipeline with a top-down view map. Results indicate that
+                    incorporating the top-down map
+                    <strong
+                      >does not improve task success or reduce warning
+                      ratios</strong
+                    >, except for a modest gain in GPT-5-mini's success rate. We
+                    attribute this to VLLMs' limited ability to interpret
+                    top-down maps and the additional noise such representations
+                    introduce compared to clean odometry signals.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic vs Static -->
+          <div class="item">
+            <div class="card">
+              <div class="card-image" style="padding: 1.5rem">
+                <figure class="image">
+                  <img
+                    src="./static/images/ablation_dynamic_static.png"
+                    alt="Dynamic vs Static"
+                    style="width: 100%; height: auto; border-radius: 8px"
+                  />
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  <h4 class="title is-4 has-text-centered">
+                    <span class="icon has-text-danger"
+                      ><i class="fas fa-running"></i
+                    ></span>
+                    Dynamic vs. Static Scenarios
+                  </h4>
+                  <p class="has-text-justified">
+                    To evaluate the influence of dynamic objects and humans in
+                    the scenario, we compare performance between dynamic and
+                    static environments. The
+                    <strong
+                      >Success Ratio and Distance Ratio are lower in dynamic
+                      environments</strong
+                    >, demonstrating that moving obstacles (forklifts, walking
+                    workers) introduce complexity and uncertainty that embodied
+                    agents struggle to handle. The
+                    <strong
+                      >Collision Ratio and Warning Ratio are significantly
+                      higher</strong
+                    >
+                    in dynamic settings, especially for GPT-5-mini, suggesting
+                    agents fail to anticipate or react quickly to changing
+                    obstacle positions. These results confirm that navigation in
+                    dynamic industrial scenarios remains substantially more
+                    challenging.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3">Qualitative Analysis</h2>
+        <div class="columns is-centered">
+          <div class="column">
+            <div class="content">
+              <p>
+                We analyze representative cases from
+                <strong>GPT-5-mini</strong>. The agent exhibits signs of spatial
+                reasoning by identifying blocked paths but often fails in global
+                planning and active exploration, getting stuck in action loops.
+              </p>
+              <figure class="image is-fullwidth">
+                <img
+                  src="./static/images/case_gpt5mini.png"
+                  alt="Qualitative results GPT-5-mini"
+                />
+                <figcaption>
+                  Illustration of both correct (first row) and incorrect (second
+                  and third rows) action behaviors of GPT-5-mini under the
+                  IndustryNav scenario.
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="BibTeX">
+      <div class="container is-max-widescreen content">
+        <h2 class="title is-3 has-text-centered">BibTeX</h2>
+        <p class="has-text-centered mb-4">
+          If you find our work useful, please consider citing:
+        </p>
+        <pre
+          style="
+            font-size: 1.1rem;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background-color: #f5f5f5;
+          "
+        ><code>@article{li2025industrynav,
+  title={IndustryNav: Exploring Spatial Reasoning of Embodied Agents in Dynamic Industrial Navigation},
+  author={Li, Yifan and Li, Lichi and Dao, Anh and Zhou, Xinyu and Qiao, Yicheng and Mai, Zheda and Lee, Daeun and Chen, Zichen and Tan, Zhen and Bansal, Mohit and Kong, Yu},
+  journal={arXiv preprint},
+  year={2025}
+}</code></pre>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="content has-text-centered">
+          <a class="icon-link" href="#">
+            <i class="fas fa-file-pdf"></i>
+          </a>
+          <a
+            class="icon-link"
+            href="https://github.com/JackYFL"
+            class="external-link"
+            disabled
+          >
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="content">
+              <p>
+                This website is licensed under a
+                <a
+                  rel="license"
+                  href="http://creativecommons.org/licenses/by-sa/4.0/"
+                  >Creative Commons Attribution-ShareAlike 4.0 International
+                  License</a
+                >.
+              </p>
+              <p>
+                Template borrowed from
+                <a href="https://github.com/nerfies/nerfies.github.io"
+                  >Nerfies</a
+                >.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- FIX #3: Added JavaScript to initialize the ablation carousel -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize ablation carousel
+        var ablationCarousel = bulmaCarousel.attach("#ablation-carousel", {
+          slidesToScroll: 1,
+          slidesToShow: 1,
+          infinite: true,
+          autoplay: false,
+          pagination: true,
+          navigation: true,
+        });
+      });
+    </script>
+  </body>
+</html>
