@@ -478,3 +478,24 @@ html {
     line-height: 1.4;
   }
 }
+
+/* Bigger trajectory GIFs */
+.trajectory-gif {
+  width: 100%;
+  /* fill the column width */
+  height: auto;
+  /* keep aspect ratio */
+  border-radius: 8px;
+  /* optional: slightly rounded corners */
+  display: block;
+  margin: 0 auto;
+}
+
+/* On larger screens, allow more vertical space */
+@media (min-width: 1024px) {
+  .trajectory-gif {
+    max-height: 420px;
+    /* increase to 500–600px if you want them even larger */
+    object-fit: contain;
+  }
+}
