@@ -193,33 +193,13 @@ body {
   font-weight: 600;
 }
 
-.table {
-  background-color: white;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* FIXED: Changed table header from blue to grey with gradient */
+/* Generic Table Styles */
 .table th {
   background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
   color: white;
   font-weight: 600;
   border: none;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-/* Alternative grey scales for different table headers if needed */
-.table.is-light th {
-  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
-  color: #495057;
-  text-shadow: none;
-}
-
-.table.is-dark th {
-  background: linear-gradient(135deg, #495057 0%, #343a40 100%);
-  color: white;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .table td {
@@ -231,7 +211,6 @@ body {
   background-color: #f8f9fa;
 }
 
-/* FIXED: Added trophy icon styling for leaderboard button */
 .leaderboard-button {
   position: relative;
   display: inline-flex;
@@ -249,7 +228,6 @@ body {
   transform: scale(1.1);
 }
 
-/* Alternative using Font Awesome icon if available */
 .leaderboard-button.fa-icon::before {
   content: "";
   font-family: "Font Awesome 5 Free";
@@ -259,7 +237,6 @@ body {
 
 .leaderboard-button.fa-icon::after {
   content: "\f091";
-  /* Trophy icon */
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
   margin-right: 0.5rem;
@@ -359,7 +336,7 @@ video {
   height: auto;
 }
 
-/* FIXED: Enhanced navigation improvements with active states */
+/* Navbar improvements */
 .navbar {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: white;
@@ -378,7 +355,6 @@ video {
   color: #2e5cb8 !important;
 }
 
-/* Active menu item styling */
 .navbar-item.is-active {
   color: #2e5cb8 !important;
   font-weight: 600;
@@ -396,17 +372,14 @@ video {
   border-radius: 2px 2px 0 0;
 }
 
-/* Smooth scroll for navigation */
 html {
   scroll-behavior: smooth;
 }
 
-/* Section padding adjustment for sticky navbar */
 .section[id] {
   scroll-margin-top: 70px;
 }
 
-/* Menu indicator animation */
 .navbar-item::before {
   content: '';
   position: absolute;
@@ -425,7 +398,6 @@ html {
   transform: scaleX(1);
 }
 
-/* Mobile menu enhancements */
 @media screen and (max-width: 1023px) {
   .navbar-item.is-active::after {
     display: none;
@@ -442,7 +414,6 @@ html {
   }
 }
 
-/* Footer styling */
 .footer {
   background-color: #f8f9fa;
   padding: 3rem 1.5rem 2rem;
@@ -453,14 +424,12 @@ html {
   transform: translateY(-2px);
 }
 
-/* Accessibility improvements */
 .button:focus,
 .navbar-item:focus {
   outline: 2px solid #2e5cb8;
   outline-offset: 2px;
 }
 
-/* Print styles */
 @media print {
 
   .navbar,
@@ -479,23 +448,79 @@ html {
   }
 }
 
-/* Bigger trajectory GIFs */
 .trajectory-gif {
   width: 100%;
-  /* fill the column width */
   height: auto;
-  /* keep aspect ratio */
   border-radius: 8px;
-  /* optional: slightly rounded corners */
   display: block;
   margin: 0 auto;
 }
 
-/* On larger screens, allow more vertical space */
 @media (min-width: 1024px) {
   .trajectory-gif {
     max-height: 420px;
-    /* increase to 500–600px if you want them even larger */
     object-fit: contain;
   }
+}
+
+/* ================================================= */
+/* UPDATED PERFORMANCE TABLE STYLES (MATCHING INDUSTRYEQA) */
+/* ================================================= */
+
+.performance-table {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 0;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+/* Note: 'background' is used here instead of 'background-color' 
+   to override the gradient defined in .table th */
+.performance-table .method-header {
+  background: #bbbbbb;
+  /* Darkest scale of #DDDDDD */
+  color: #333333;
+  font-weight: 600;
+  border: 1px solid #aaaaaa;
+  padding: 1rem;
+  text-align: center;
+  vertical-align: middle;
+  min-width: 180px;
+  text-shadow: none;
+  /* Removed shadow from generic table */
+}
+
+.performance-table .main-header {
+  background: #bbbbbb;
+  /* Darkest scale of #DDDDDD */
+  color: #333333;
+  font-weight: 600;
+  border: 1px solid #aaaaaa;
+  padding: 0.8rem;
+  text-align: center;
+  font-size: 1rem;
+  text-shadow: none;
+}
+
+.performance-table .sub-header {
+  background: #cccccc;
+  /* Medium scale of #DDDDDD */
+  color: #333333;
+  font-weight: 500;
+  border: 1px solid #bbbbbb;
+  padding: 0.7rem;
+  text-align: center;
+  font-size: 0.9rem;
+  text-shadow: none;
+}
+
+.performance-table td {
+  border: 1px solid #e8e8e8;
+  vertical-align: middle;
+  padding: 0.7rem 0.5rem;
+  text-align: center;
+  color: #495057;
 }

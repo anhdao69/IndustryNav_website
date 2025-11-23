@@ -553,41 +553,32 @@
 
         <!-- Improved Results Table -->
         <div class="table-container">
-          <table class="table is-fullwidth is-hoverable is-bordered">
-            <!-- MODIFIED TABLE HEADER WITH BLUE THEME -->
+          <table
+            class="table is-fullwidth is-hoverable is-bordered performance-table"
+          >
             <thead>
-              <tr style="background-color: #2e5cb8; color: white">
-                <th rowspan="2" style="vertical-align: middle; color: white">
+              <tr>
+                <th
+                  rowspan="2"
+                  class="method-header"
+                  style="vertical-align: middle"
+                >
                   Embodied Agents
                 </th>
-                <th colspan="2" class="has-text-centered" style="color: white">
-                  Task Success (%)
-                </th>
-                <th colspan="1" class="has-text-centered" style="color: white">
-                  Efficiency
-                </th>
-                <th colspan="2" class="has-text-centered" style="color: white">
-                  Safety (%)
-                </th>
+                <th colspan="2" class="main-header">Task Success (%)</th>
+                <th colspan="1" class="main-header">Efficiency</th>
+                <th colspan="2" class="main-header">Safety (%)</th>
               </tr>
-              <tr style="background-color: #2e5cb8; color: white">
-                <th class="has-text-centered" style="color: white">
-                  Success Ratio &uarr;
-                </th>
-                <th class="has-text-centered" style="color: white">
-                  Distance Ratio &uarr;
-                </th>
-                <th class="has-text-centered" style="color: white">
-                  Avg Steps &darr;
-                </th>
-                <th class="has-text-centered" style="color: white">
-                  Collision Ratio &darr;
-                </th>
-                <th class="has-text-centered" style="color: white">
-                  Warning Ratio &darr;
-                </th>
+              <tr>
+                <th class="sub-header">Success Ratio &uarr;</th>
+                <th class="sub-header">Distance Ratio &uarr;</th>
+                <th class="sub-header">Avg Steps &darr;</th>
+                <th class="sub-header">Collision Ratio &darr;</th>
+                <th class="sub-header">Warning Ratio &darr;</th>
               </tr>
             </thead>
+            <tbody></tbody>
+
             <tbody>
               <!-- Closed Source -->
               <tr
