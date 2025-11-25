@@ -524,3 +524,141 @@ html {
   text-align: center;
   color: #495057;
 }
+
+/* Styling for the GIF containers */
+.gif-container img {
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  object-fit: cover; /* Ensures gifs fill the frame nicely */
+  width: 100%;
+  height: 100%;
+}
+
+/* Tab transition animation */
+.model-content {
+  animation: fadeEffect 0.6s;
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* Tab Active Color Override */
+.tabs.is-toggle li.is-active a {
+  background-color: #2e5cb8 !important; /* Your brand color */
+  border-color: #2e5cb8 !important;
+}
+
+/* Responsive adjustment for mobile */
+@media screen and (max-width: 768px) {
+  .gif-container {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* =======================
+   Agent Trajectory Styling
+   ======================= */
+
+/* Make the whole box look modern and colorful */
+.trajectory-box {
+  border-radius: 18px;
+  padding: 2.5rem 2rem;
+  background: linear-gradient(135deg, #f5f7ff, #f0f9ff);
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.12);
+  border: 1px solid rgba(120, 144, 255, 0.25);
+}
+
+/* Tabs minor enhancement */
+#trajectory-tabs li.is-active a {
+  font-weight: 600;
+}
+
+/* Only one panel visible at a time (logic from before) */
+.trajectory-panel {
+  display: none;
+}
+
+.trajectory-panel.is-active {
+  display: block;
+}
+
+/* Layout: make top-down view larger than egocentric */
+.trajectory-columns {
+  align-items: stretch;
+}
+
+/* Desktop proportions: ego ~40%, top-down ~60% */
+.trajectory-column-ego {
+  flex: 0 0 38%;
+}
+
+.trajectory-column-topdown {
+  flex: 0 0 62%;
+}
+
+/* Mobile: stack vertically, full width */
+@media screen and (max-width: 768px) {
+
+  .trajectory-column-ego,
+  .trajectory-column-topdown {
+    flex: 1 0 100%;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Card-style frames for GIFs */
+.trajectory-figure {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  padding: 0.75rem;
+  background: radial-gradient(circle at top left, #e3f2fd, #e8eaf6);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18);
+}
+
+/* Slightly different tint for top-down frame */
+.trajectory-figure--topdown {
+  background: radial-gradient(circle at top left, #e8f5e9, #e3f2fd);
+}
+
+/* Actual GIFs */
+.trajectory-gif {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.25);
+}
+
+/* Make the top-down GIF feel a bit larger / more prominent */
+.trajectory-gif-topdown {
+  transform: scale(1.03);
+  transform-origin: center;
+}
+
+/* Small pill labels overlayed on the corner */
+.view-chip {
+  position: absolute;
+  left: 0.9rem;
+  top: 0.9rem;
+  padding: 0.25rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  border-radius: 999px;
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.18);
+}
+
+/* Different accent edges for ego vs top-down */
+.view-chip--ego {
+  border: 1px solid rgba(33, 150, 243, 0.7);
+}
+
+.view-chip--topdown {
+  border: 1px solid rgba(76, 175, 80, 0.7);
+}
+

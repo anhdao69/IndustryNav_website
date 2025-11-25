@@ -45,7 +45,7 @@
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
   </head>
-  <body>
+  
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <!-- FIX #2: Removed the logo, keeping only the text -->
@@ -100,19 +100,19 @@
           <div class="columns is-centered">
             <div class="column has-text-centered">
               <!-- TITLE WITH LOGO -->
+              <span class="is-size-2" style="vertical-align: middle">
+                <img
+                  src="./static/images/industrynav_logo2.png"
+                  alt="Logo"
+                  style="
+                    height: 2.5em;
+                    vertical-align: middle;
+                    margin-bottom: 1em;
+                  "
+                />
+              </span>
               <h1 class="title is-1 publication-title">
-                <span class="is-size-2" style="vertical-align: middle">
-                  <img
-                    src="./static/images/industrynav_logo2.png"
-                    alt="Logo"
-                    style="
-                      height: 2.5em;
-                      vertical-align: middle;
-                      margin-bottom: 1em;
-                    "
-                  />
-                </span>
-                : Exploring Spatial Reasoning of Embodied Agents in Dynamic
+                Exploring Spatial Reasoning of Embodied Agents in Dynamic
                 Industrial Navigation
               </h1>
 
@@ -262,6 +262,378 @@
         </div>
       </div>
     </section>
+
+    <!-- === AGENT TRAJECTORY OUTPUTS (ONE MODEL AT A TIME, TOP MENU) === -->
+    <section class="section" id="trajectories">
+      <div class="container is-max-widescreen">
+        <h2 class="title is-3 has-text-centered">Agent Trajectory Outputs</h2>
+        <p class="has-text-centered mb-5">
+          We visualize the navigation behavior of each embodied agent using
+          synchronized <strong>egocentric</strong> and
+          <strong>top-down</strong> trajectory GIFs.
+        </p>
+
+        <div class="box trajectory-box">
+          <!-- Top menu: model selection -->
+          <div class="tabs is-centered is-boxed is-medium" id="trajectory-tabs">
+            <ul>
+              <li class="is-active" data-model="gpt-4o">
+                <a>GPT-4o</a>
+              </li>
+              <li data-model="gpt-5-mini">
+                <a>GPT-5-mini</a>
+              </li>
+              <li data-model="claude-haiku-4.5">
+                <a>Claude-Haiku-4.5</a>
+              </li>
+              <li data-model="claude-sonnet-4.5">
+                <a>Claude-Sonnet-4.5</a>
+              </li>
+              <li data-model="gemini-2.5-flash">
+                <a>Gemini-2.5-flash</a>
+              </li>
+              <li data-model="qwen3-vl-8b-instruct">
+                <a>Qwen3-VL-8B-Instruct</a>
+              </li>
+              <li data-model="qwen3-vl-30b-a3b-instruct">
+                <a>Qwen3-VL-30B-A3B-Instruct</a>
+              </li>
+              <li data-model="llama-4-scout">
+                <a>LLaMA-4-Scout</a>
+              </li>
+              <li data-model="nemotron-nano-12b-v2-vl">
+                <a>Nemotron-nano-12B-v2-VL</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Panels: one visible at a time -->
+          <div id="trajectory-panels">
+
+            <!-- GPT-4o -->
+            <div class="trajectory-panel is-active" data-model="gpt-4o">
+              <h3 class="title is-4 has-text-centered mb-4">GPT-4o</h3>
+              <div class="columns is-centered">
+                <div class="column is-11">
+                  <div class="columns is-vcentered trajectory-columns">
+                    <div class="column trajectory-column-ego">
+                      <figure class="image trajectory-figure">
+                        <img
+                          class="trajectory-gif trajectory-gif-ego"
+                          src="./static/images/GIF/gpt-4o/fp.gif"
+                          alt="GPT-4o egocentric trajectory"
+                        />
+                        <span class="view-chip view-chip--ego">
+                          Egocentric View
+                        </span>
+                      </figure>
+                    </div>
+                    <div class="column trajectory-column-topdown">
+                      <figure class="image trajectory-figure trajectory-figure--topdown">
+                        <img
+                          class="trajectory-gif trajectory-gif-topdown"
+                          src="./static/images/GIF/gpt-4o/minimap.gif"
+                          alt="GPT-4o top-down trajectory"
+                        />
+                        <span class="view-chip view-chip--topdown">
+                          Top-Down View
+                        </span>
+                      </figure>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- GPT-5-mini -->
+            <div class="trajectory-panel" data-model="gpt-5-mini">
+              <h3 class="title is-4 has-text-centered mb-4">GPT-5-mini</h3>
+              <div class="columns is-centered">
+                <div class="column is-11">
+                  <div class="columns is-vcentered trajectory-columns">
+                    <div class="column trajectory-column-ego">
+                      <figure class="image trajectory-figure">
+                        <img
+                          class="trajectory-gif trajectory-gif-ego"
+                          src="./static/images/GIF/gpt-5-image-mini/fp.gif"
+                          alt="GPT-5-mini egocentric trajectory"
+                        />
+                        <span class="view-chip view-chip--ego">
+                          Egocentric View
+                        </span>
+                      </figure>
+                    </div>
+                    <div class="column trajectory-column-topdown">
+                      <figure class="image trajectory-figure trajectory-figure--topdown">
+                        <img
+                          class="trajectory-gif trajectory-gif-topdown"
+                          src="./static/images/GIF/gpt-5-image-mini/minimap.gif"
+                          alt="GPT-5-mini top-down trajectory"
+                        />
+                        <span class="view-chip view-chip--topdown">
+                          Top-Down View
+                        </span>
+                      </figure>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Claude-Haiku-4.5 -->
+            <div class="trajectory-panel" data-model="claude-haiku-4.5">
+              <h3 class="title is-4 has-text-centered mb-4">Claude-Haiku-4.5</h3>
+              <div class="columns is-centered">
+                <div class="column is-11">
+                  <div class="columns is-vcentered trajectory-columns">
+                    <div class="column trajectory-column-ego">
+                      <figure class="image trajectory-figure">
+                        <img
+                          class="trajectory-gif trajectory-gif-ego"
+                          src="./static/images/GIF/claude-haiku-4.5/fp.gif"
+                          alt="Claude-Haiku-4.5 egocentric trajectory"
+                        />
+                        <span class="view-chip view-chip--ego">
+                          Egocentric View
+                        </span>
+                      </figure>
+                    </div>
+                    <div class="column trajectory-column-topdown">
+                      <figure class="image trajectory-figure trajectory-figure--topdown">
+                        <img
+                          class="trajectory-gif trajectory-gif-topdown"
+                          src="./static/images/GIF/claude-haiku-4.5/minimap.gif"
+                          alt="Claude-Haiku-4.5 top-down trajectory"
+                        />
+                        <span class="view-chip view-chip--topdown">
+                          Top-Down View
+                        </span>
+                      </figure>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Claude-Sonnet-4.5 -->
+            <div class="trajectory-panel" data-model="claude-sonnet-4.5">
+              <h3 class="title is-4 has-text-centered mb-4">Claude-Sonnet-4.5</h3>
+              <div class="columns is-centered">
+                <div class="column is-11">
+                  <div class="columns is-vcentered trajectory-columns">
+                    <div class="column trajectory-column-ego">
+                      <figure class="image trajectory-figure">
+                        <img
+                          class="trajectory-gif trajectory-gif-ego"
+                          src="./static/images/GIF/claude-sonnet-4.5/fp.gif"
+                          alt="Claude-Sonnet-4.5 egocentric trajectory"
+                        />
+                        <span class="view-chip view-chip--ego">
+                          Egocentric View
+                        </span>
+                      </figure>
+                    </div>
+                    <div class="column trajectory-column-topdown">
+                      <figure class="image trajectory-figure trajectory-figure--topdown">
+                        <img
+                          class="trajectory-gif trajectory-gif-topdown"
+                          src="./static/images/GIF/claude-sonnet-4.5/minimap.gif"
+                          alt="Claude-Sonnet-4.5 top-down trajectory"
+                        />
+                        <span class="view-chip view-chip--topdown">
+                          Top-Down View
+                        </span>
+                      </figure>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Gemini-2.5-flash -->
+            <div class="trajectory-panel" data-model="gemini-2.5-flash">
+              <h3 class="title is-4 has-text-centered mb-4">Gemini-2.5-flash</h3>
+              <div class="columns is-centered">
+                <div class="column is-11">
+                  <div class="columns is-vcentered trajectory-columns">
+                    <div class="column trajectory-column-ego">
+                      <figure class="image trajectory-figure">
+                        <img
+                          class="trajectory-gif trajectory-gif-ego"
+                          src="./static/images/GIF/gemini-2.5-flash/fp.gif"
+                          alt="Gemini-2.5-flash egocentric trajectory"
+                        />
+                        <span class="view-chip view-chip--ego">
+                          Egocentric View
+                        </span>
+                      </figure>
+                    </div>
+                    <div class="column trajectory-column-topdown">
+                      <figure class="image trajectory-figure trajectory-figure--topdown">
+                        <img
+                          class="trajectory-gif trajectory-gif-topdown"
+                          src="./static/images/GIF/gemini-2.5-flash/minimap.gif"
+                          alt="Gemini-2.5-flash top-down trajectory"
+                        />
+                        <span class="view-chip view-chip--topdown">
+                          Top-Down View
+                        </span>
+                      </figure>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Qwen3-VL-8B-Instruct -->
+            <div class="trajectory-panel" data-model="qwen3-vl-8b-instruct">
+              <h3 class="title is-4 has-text-centered mb-4">Qwen3-VL-8B-Instruct</h3>
+              <div class="columns is-centered">
+                <div class="column is-11">
+                  <div class="columns is-vcentered trajectory-columns">
+                    <div class="column trajectory-column-ego">
+                      <figure class="image trajectory-figure">
+                        <img
+                          class="trajectory-gif trajectory-gif-ego"
+                          src="./static/images/GIF/qwen3-vl-8b-instruct/fp.gif"
+                          alt="Qwen3-VL-8B-Instruct egocentric trajectory"
+                        />
+                        <span class="view-chip view-chip--ego">
+                          Egocentric View
+                        </span>
+                      </figure>
+                    </div>
+                    <div class="column trajectory-column-topdown">
+                      <figure class="image trajectory-figure trajectory-figure--topdown">
+                        <img
+                          class="trajectory-gif trajectory-gif-topdown"
+                          src="./static/images/GIF/qwen3-vl-8b-instruct/minimap.gif"
+                          alt="Qwen3-VL-8B-Instruct top-down trajectory"
+                        />
+                        <span class="view-chip view-chip--topdown">
+                          Top-Down View
+                        </span>
+                      </figure>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Qwen3-VL-30B-A3B-Instruct -->
+            <div class="trajectory-panel" data-model="qwen3-vl-30b-a3b-instruct">
+              <h3 class="title is-4 has-text-centered mb-4">
+                Qwen3-VL-30B-A3B-Instruct
+              </h3>
+              <div class="columns is-centered">
+                <div class="column is-11">
+                  <div class="columns is-vcentered trajectory-columns">
+                    <div class="column trajectory-column-ego">
+                      <figure class="image trajectory-figure">
+                        <img
+                          class="trajectory-gif trajectory-gif-ego"
+                          src="./static/images/GIF/qwen3-vl-30b-a3b-instruct/fp.gif"
+                          alt="Qwen3-VL-30B-A3B-Instruct egocentric trajectory"
+                        />
+                        <span class="view-chip view-chip--ego">
+                          Egocentric View
+                        </span>
+                      </figure>
+                    </div>
+                    <div class="column trajectory-column-topdown">
+                      <figure class="image trajectory-figure trajectory-figure--topdown">
+                        <img
+                          class="trajectory-gif trajectory-gif-topdown"
+                          src="./static/images/GIF/qwen3-vl-30b-a3b-instruct/minimap.gif"
+                          alt="Qwen3-VL-30B-A3B-Instruct top-down trajectory"
+                        />
+                        <span class="view-chip view-chip--topdown">
+                          Top-Down View
+                        </span>
+                      </figure>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- LLaMA-4-Scout -->
+            <div class="trajectory-panel" data-model="llama-4-scout">
+              <h3 class="title is-4 has-text-centered mb-4">LLaMA-4-Scout</h3>
+              <div class="columns is-centered">
+                <div class="column is-11">
+                  <div class="columns is-vcentered trajectory-columns">
+                    <div class="column trajectory-column-ego">
+                      <figure class="image trajectory-figure">
+                        <img
+                          class="trajectory-gif trajectory-gif-ego"
+                          src="./static/images/GIF/llama-4-scout/fp.gif"
+                          alt="LLaMA-4-Scout egocentric trajectory"
+                        />
+                        <span class="view-chip view-chip--ego">
+                          Egocentric View
+                        </span>
+                      </figure>
+                    </div>
+                    <div class="column trajectory-column-topdown">
+                      <figure class="image trajectory-figure trajectory-figure--topdown">
+                        <img
+                          class="trajectory-gif trajectory-gif-topdown"
+                          src="./static/images/GIF/llama-4-scout/minimap.gif"
+                          alt="LLaMA-4-Scout top-down trajectory"
+                        />
+                        <span class="view-chip view-chip--topdown">
+                          Top-Down View
+                        </span>
+                      </figure>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Nemotron-nano-12B-v2-VL:Free -->
+            <div class="trajectory-panel" data-model="nemotron-nano-12b-v2-vl">
+              <h3 class="title is-4 has-text-centered mb-4">
+                Nemotron-nano-12B-v2-VL
+              </h3>
+              <div class="columns is-centered">
+                <div class="column is-11">
+                  <div class="columns is-vcentered trajectory-columns">
+                    <div class="column trajectory-column-ego">
+                      <figure class="image trajectory-figure">
+                        <img
+                          class="trajectory-gif trajectory-gif-ego"
+                          src="./static/images/GIF/nemotron-nano-12b-v2-vl:free/fp.gif"
+                          alt="Nemotron-nano-12B-v2-VL egocentric trajectory"
+                        />
+                        <span class="view-chip view-chip--ego">
+                          Egocentric View
+                        </span>
+                      </figure>
+                    </div>
+                    <div class="column trajectory-column-topdown">
+                      <figure class="image trajectory-figure trajectory-figure--topdown">
+                        <img
+                          class="trajectory-gif trajectory-gif-topdown"
+                          src="./static/images/GIF/nemotron-nano-12b-v2-vl:free/minimap.gif"
+                          alt="Nemotron-nano-12B-v2-VL top-down trajectory"
+                        />
+                        <span class="view-chip view-chip--topdown">
+                          Top-Down View
+                        </span>
+                      </figure>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div> <!-- /#trajectory-panels -->
+        </div> <!-- /.box -->
+      </div>
+    </section>
+
 
     <section class="section" id="abstract">
       <div class="container is-max-desktop">
@@ -1027,7 +1399,8 @@
 
     <section class="section">
       <div class="container is-max-desktop">
-        <h2 class="title is-3">Qualitative Analysis</h2>
+        <h2 class="title is-3 has-text-centered">Qualitative Analysis</h2>
+
         <div class="columns is-centered">
           <div class="column">
             <div class="content">
@@ -1055,319 +1428,7 @@
     </section>
 
     <!-- TRAJECTORY OUTPUT CAROUSEL SECTION -->
-    <section class="section" id="trajectories">
-      <div class="container is-max-widescreen">
-        <h2 class="title is-3 has-text-centered">Agent Trajectory Outputs</h2>
-        <p class="has-text-centered mb-5">
-          We visualize the navigation behavior of each embodied agent using
-          synchronized <strong>egocentric</strong> and
-          <strong>top-down</strong> trajectory GIFs.
-        </p>
 
-        <div id="trajectory-carousel" class="carousel results-carousel">
-          <!-- GPT-4o -->
-          <div class="item">
-            <div class="box">
-              <h4 class="title is-4 has-text-centered">GPT-4o</h4>
-              <div class="columns is-vcentered">
-                <div class="column is-6">
-                  <figure class="image">
-                    <img
-                      class="trajectory-gif"
-                      src="./static/images/GIF/gpt-4o/fp.gif"
-                      alt="GPT-4o egocentric trajectory"
-                    />
-                  </figure>
-                  <p class="has-text-centered mt-2">
-                    <strong>Egocentric View</strong>
-                  </p>
-                </div>
-                <div class="column is-6">
-                  <figure class="image">
-                    <img
-                      class="trajectory-gif"
-                      src="./static/images/GIF/gpt-4o/minimap.gif"
-                      alt="GPT-4o top-down trajectory"
-                    />
-                  </figure>
-                  <p class="has-text-centered mt-2">
-                    <strong>Top-Down View</strong>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- GPT-5-mini (gpt-5-image-mini folder) -->
-          <div class="item">
-            <div class="box">
-              <h4 class="title is-4 has-text-centered">GPT-5-mini</h4>
-              <div class="columns is-vcentered">
-                <div class="column is-6">
-                  <figure class="image">
-                    <img
-                      class="trajectory-gif"
-                      src="./static/images/GIF/gpt-5-image-mini/fp.gif"
-                      alt="GPT-5-mini egocentric trajectory"
-                    />
-                  </figure>
-                  <p class="has-text-centered mt-2">
-                    <strong>Egocentric View</strong>
-                  </p>
-                </div>
-                <div class="column is-6">
-                  <figure class="image">
-                    <img
-                      class="trajectory-gif"
-                      src="./static/images/GIF/gpt-5-image-mini/minimap.gif"
-                      alt="GPT-5-mini top-down trajectory"
-                    />
-                  </figure>
-                  <p class="has-text-centered mt-2">
-                    <strong>Top-Down View</strong>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Claude-Haiku-4.5 -->
-          <div class="item">
-            <div class="box">
-              <h4 class="title is-4 has-text-centered">Claude-Haiku-4.5</h4>
-              <div class="columns is-vcentered">
-                <div class="column is-6">
-                  <figure class="image">
-                    <img
-                      class="trajectory-gif"
-                      src="./static/images/GIF/claude-haiku-4.5/fp.gif"
-                      alt="Claude-Haiku-4.5 egocentric trajectory"
-                    />
-                  </figure>
-                  <p class="has-text-centered mt-2">
-                    <strong>Egocentric View</strong>
-                  </p>
-                </div>
-                <div class="column is-6">
-                  <figure class="image">
-                    <img
-                      class="trajectory-gif"
-                      src="./static/images/GIF/claude-haiku-4.5/minimap.gif"
-                      alt="Claude-Haiku-4.5 top-down trajectory"
-                    />
-                  </figure>
-                  <p class="has-text-centered mt-2">
-                    <strong>Top-Down View</strong>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Claude-Sonnet-4.5 -->
-          <div class="item">
-            <div class="box">
-              <h4 class="title is-4 has-text-centered">Claude-Sonnet-4.5</h4>
-              <div class="columns is-vcentered">
-                <div class="column is-6">
-                  <figure class="image">
-                    <img
-                      class="trajectory-gif"
-                      src="./static/images/GIF/claude-sonnet-4.5/fp.gif"
-                      alt="Claude-Sonnet-4.5 egocentric trajectory"
-                    />
-                  </figure>
-                  <p class="has-text-centered mt-2">
-                    <strong>Egocentric View</strong>
-                  </p>
-                </div>
-                <div class="column is-6">
-                  <figure class="image">
-                    <img
-                      class="trajectory-gif"
-                      src="./static/images/GIF/claude-sonnet-4.5/minimap.gif"
-                      alt="Claude-Sonnet-4.5 top-down trajectory"
-                    />
-                  </figure>
-                  <p class="has-text-centered mt-2">
-                    <strong>Top-Down View</strong>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Gemini-2.5-flash -->
-          <div class="item">
-            <div class="box">
-              <h4 class="title is-4 has-text-centered">Gemini-2.5-flash</h4>
-              <div class="columns is-vcentered">
-                <div class="column is-6">
-                  <figure class="image">
-                    <img
-                      class="trajectory-gif"
-                      src="./static/images/GIF/gemini-2.5-flash/fp.gif"
-                      alt="Gemini-2.5-flash egocentric trajectory"
-                    />
-                  </figure>
-                  <p class="has-text-centered mt-2">
-                    <strong>Egocentric View</strong>
-                  </p>
-                </div>
-                <div class="column is-6">
-                  <figure class="image">
-                    <img
-                      class="trajectory-gif"
-                      src="./static/images/GIF/gemini-2.5-flash/minimap.gif"
-                      alt="Gemini-2.5-flash top-down trajectory"
-                    />
-                  </figure>
-                  <p class="has-text-centered mt-2">
-                    <strong>Top-Down View</strong>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Qwen3-VL-8B-Instruct -->
-          <div class="item">
-            <div class="box">
-              <h4 class="title is-4 has-text-centered">Qwen3-VL-8B-Instruct</h4>
-              <div class="columns is-vcentered">
-                <div class="column is-6">
-                  <figure class="image">
-                    <img
-                      class="trajectory-gif"
-                      src="./static/images/GIF/qwen3-vl-8b-instruct/fp.gif"
-                      alt="Qwen3-VL-8B-Instruct egocentric trajectory"
-                    />
-                  </figure>
-                  <p class="has-text-centered mt-2">
-                    <strong>Egocentric View</strong>
-                  </p>
-                </div>
-                <div class="column is-6">
-                  <figure class="image">
-                    <img
-                      class="trajectory-gif"
-                      src="./static/images/GIF/qwen3-vl-8b-instruct/minimap.gif"
-                      alt="Qwen3-VL-8B-Instruct top-down trajectory"
-                    />
-                  </figure>
-                  <p class="has-text-centered mt-2">
-                    <strong>Top-Down View</strong>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Qwen3-VL-30B-A3B-Instruct -->
-          <div class="item">
-            <div class="box">
-              <h4 class="title is-4 has-text-centered">
-                Qwen3-VL-30B-A3B-Instruct
-              </h4>
-              <div class="columns is-vcentered">
-                <div class="column is-6">
-                  <figure class="image">
-                    <img
-                      class="trajectory-gif"
-                      src="./static/images/GIF/qwen3-vl-30b-a3b-instruct/fp.gif"
-                      alt="Qwen3-VL-30B-A3B-Instruct egocentric trajectory"
-                    />
-                  </figure>
-                  <p class="has-text-centered mt-2">
-                    <strong>Egocentric View</strong>
-                  </p>
-                </div>
-                <div class="column is-6">
-                  <figure class="image">
-                    <img
-                      class="trajectory-gif"
-                      src="./static/images/GIF/qwen3-vl-30b-a3b-instruct/minimap.gif"
-                      alt="Qwen3-VL-30B-A3B-Instruct top-down trajectory"
-                    />
-                  </figure>
-                  <p class="has-text-centered mt-2">
-                    <strong>Top-Down View</strong>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- LLaMA-4-Scout -->
-          <div class="item">
-            <div class="box">
-              <h4 class="title is-4 has-text-centered">LLaMA-4-Scout</h4>
-              <div class="columns is-vcentered">
-                <div class="column is-6">
-                  <figure class="image">
-                    <img
-                      class="trajectory-gif"
-                      src="./static/images/GIF/llama-4-scout/fp.gif"
-                      alt="LLaMA-4-Scout egocentric trajectory"
-                    />
-                  </figure>
-                  <p class="has-text-centered mt-2">
-                    <strong>Egocentric View</strong>
-                  </p>
-                </div>
-                <div class="column is-6">
-                  <figure class="image">
-                    <img
-                      class="trajectory-gif"
-                      src="./static/images/GIF/llama-4-scout/minimap.gif"
-                      alt="LLaMA-4-Scout top-down trajectory"
-                    />
-                  </figure>
-                  <p class="has-text-centered mt-2">
-                    <strong>Top-Down View</strong>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Nemotron-nano-12B-v2-VL:Free -->
-          <div class="item">
-            <div class="box">
-              <h4 class="title is-4 has-text-centered">
-                Nemotron-nano-12B-v2-VL
-              </h4>
-              <div class="columns is-vcentered">
-                <div class="column is-6">
-                  <figure class="image">
-                    <img
-                      class="trajectory-gif"
-                      src="./static/images/GIF/nemotron-nano-12b-v2-vl:free/fp.gif"
-                      alt="Nemotron-nano-12B-v2-VL egocentric trajectory"
-                    />
-                  </figure>
-                  <p class="has-text-centered mt-2">
-                    <strong>Egocentric View</strong>
-                  </p>
-                </div>
-                <div class="column is-6">
-                  <figure class="image">
-                    <img
-                      class="trajectory-gif"
-                      src="./static/images/GIF/nemotron-nano-12b-v2-vl:free/minimap.gif"
-                      alt="Nemotron-nano-12B-v2-VL top-down trajectory"
-                    />
-                  </figure>
-                  <p class="has-text-centered mt-2">
-                    <strong>Top-Down View</strong>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <section class="section" id="BibTeX">
       <div class="container is-max-widescreen content">
@@ -1431,10 +1492,10 @@
     </footer>
 
     <!-- FIX #3: Added JavaScript to initialize the ablation carousel -->
-    <script>
+        <script>
       document.addEventListener("DOMContentLoaded", function () {
         // Initialize ablation carousel
-        var ablationCarousel = bulmaCarousel.attach("#ablation-carousel", {
+        bulmaCarousel.attach("#ablation-carousel", {
           slidesToScroll: 1,
           slidesToShow: 1,
           infinite: true,
@@ -1442,7 +1503,48 @@
           pagination: true,
           navigation: true,
         });
+
+        // === Trajectory top-menu (tabs) logic ===
+        var tabContainer = document.getElementById("trajectory-tabs");
+        if (tabContainer) {
+          var tabs = tabContainer.querySelectorAll("li[data-model]");
+          var panels = document.querySelectorAll(".trajectory-panel");
+
+          function activateModel(model) {
+            // tabs
+            tabs.forEach(function (tab) {
+              if (tab.getAttribute("data-model") === model) {
+                tab.classList.add("is-active");
+              } else {
+                tab.classList.remove("is-active");
+              }
+            });
+
+            // panels
+            panels.forEach(function (panel) {
+              if (panel.getAttribute("data-model") === model) {
+                panel.classList.add("is-active");
+              } else {
+                panel.classList.remove("is-active");
+              }
+            });
+          }
+
+          tabs.forEach(function (tab) {
+            tab.addEventListener("click", function () {
+              var model = this.getAttribute("data-model");
+              activateModel(model);
+            });
+          });
+
+          // Initialize with the first active tab
+          var firstActive = tabContainer.querySelector("li.is-active[data-model]");
+          if (firstActive) {
+            activateModel(firstActive.getAttribute("data-model"));
+          }
+        }
       });
     </script>
+
   </body>
 </html>
